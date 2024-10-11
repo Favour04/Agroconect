@@ -1,16 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES6", 
     "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "outDir": "./dist",
-    "rootDir": "./",
-    "typeRoots": ["./node_modules/@types"]
+    "strict": true, 
+    "esModuleInterop": true, 
+    "skipLibCheck": true, 
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["./**/*", "tests/**/*"],
   "exclude": ["node_modules"]
 }
