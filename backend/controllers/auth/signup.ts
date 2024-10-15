@@ -7,16 +7,41 @@ export class SignUp {
         this.auth = new Auth()
     }
 
-    async regiserUser(res: Response, req: Request): Promise<void> {
+    async regiserUser(req: Request, res: Response): Promise<void> {
         const {email, password, role} = req.body
-        const user = await this.auth.register_user(email, password, role)
-        if (!user) {
-            
+        
+        try {
+            const user = await this.auth.register_user(email, password, role)
+            if (user) {
+                res.status(201).json({
+                    "status-code": 201,
+                    "message": `user ${user.email} created`
+                })
+            }
+        } catch(error) {
+            if (error instanceof Error) {
+                if (error.message.includes("already exist")) {
+                    res.status(400).json({
+                        status: 400,
+                        message: error.message
+                    }
+                    )
+                } else {
+                    res.status(500).json({
+                        status: 500,
+                        message: "An error occur during signup"
+                    }
+                    )
+                    console.log(error.message)
+                }
+            } else {
+                res.status(500).json({
+                    status: 500,
+                    message: "An unknown error occured"
+                })
+                console.log("unknown error occured")
+            }
         }
-        res.status(201).json({
-            "status-code": 201,
-            "message": `user ${email} created`
-        })
     }
 
     regiserUser0auth(res: Response, req: Request): void {}
