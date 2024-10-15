@@ -7,9 +7,9 @@ const login: Login = new Login()
 const register: SignUp = new SignUp()
 
 // login route
-auth.post("/login", async (res: Response, req: Request) => await login.loginUser(res, req))
+auth.post("/login", async (req: Request, res: Response) => await login.loginUser(req, res))
 
 // signup route
-auth.post("/register", async (res: Response, req: Request) => await register.regiserUser(res, req))
+auth.post("/register", async (req: Request, res: Response) => await register.regiserUser(req, res))
 
 export default auth
