@@ -1,10 +1,12 @@
 import  express, { Application, Request, Response } from "express";
 import auth from "./routes/auth_route";
+import cors from "cors"
 
 const app: Application = express();
-const PORT = 3000;
+const PORT = 8000;
 
-app.use(express.json());  
+app.use(express.json());
+app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
     res.send("Hello World");
