@@ -8,7 +8,7 @@ interface IUser extends Document{
 }
 
 export const userSchema = new Schema<IUser>({
-    walletAdress: { type: String, required: true },
+    walletAdress: { type: String, required: false },
     userName: { type: String, required: false },
     email: { type: String, required: true },
     password: { type: String, required: true }
