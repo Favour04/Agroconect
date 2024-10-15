@@ -32,7 +32,7 @@ export class Auth implements IAuth {
             throw Error("missing credentials")
         }
 
-        if (this.db.findUserByEmail(email) != null) {
+        if (await this.db.findUserByEmail(email)) {
             throw Error(`User ${email} already exist`)
         }
 
